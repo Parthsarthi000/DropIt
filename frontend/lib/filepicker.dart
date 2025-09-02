@@ -69,7 +69,7 @@ Future<int> deleteFile(String filename, String username) async {
 }
 
 Future<String> fetchDocument(String username, String filename) async {
-  // ✅ Pass parameters in the URL instead of using `body`
+  // Pass parameters in the URL instead of using `body`
   Uri url = Uri.parse(
       "http://43.199.44.69:5002/api/getFile?username=$username&filename=${Uri.encodeComponent(filename)}");
 
@@ -81,7 +81,7 @@ Future<String> fetchDocument(String username, String filename) async {
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      return data["file_url"]; // ✅ Correctly extracts file URL
+      return data["file_url"];
     } else {
       print("Error fetching document: ${response.statusCode}");
       return "";
